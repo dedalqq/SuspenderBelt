@@ -106,7 +106,12 @@ class Autorisation {
     }
     
     public function isLogin() {
-        return (bool)$this->user->id;
+        if ($this->user instanceof User) {
+            return (bool)$this->user->getId();
+        }
+        else {
+            return false;
+        }
     }
 }
 

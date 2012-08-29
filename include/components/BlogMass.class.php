@@ -53,7 +53,7 @@ class BlogMass extends Object {
         $tpl = Tpl::getInstance();
         
         $tpl->value('blogs_subject', $this->subject);
-        $tpl->value('blogs_date', Date::format($this->date));
+        $tpl->value('blogs_date', $this->getDate());
         $tpl->value('blogs_text', $this->text);
         $tpl->value('blogs_id', $this->getId());
         $tpl->value('blog_action', $_SERVER['REQUEST_URI']);

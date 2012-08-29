@@ -33,8 +33,12 @@ div.fon {
 
 div.login_form {
     float: right;
-    width: 220px;
+    width: 285px;
     text-align: right;
+}
+
+div.login_form tr:first-child input {
+    width: 100%
 }
 
 div.logo_img {
@@ -89,6 +93,10 @@ div.left_menu h3 {
 
 .blogs_mass_list {
     width: 815px;
+}
+
+.blogs_mass_list .date {
+    color: gray;
 }
 
 .block .center {

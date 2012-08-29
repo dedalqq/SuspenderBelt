@@ -113,6 +113,12 @@ abstract class Object {
         $this->setData($data);
     }
     
+    public function getDate() {
+        if (isset($this->date)) {
+            return Date::format($this->date);
+        }
+    }
+    
     public function __destruct() {
         //$this->save();
     }

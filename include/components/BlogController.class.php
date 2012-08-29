@@ -39,14 +39,28 @@ class BlogController {
     
     private function printList() {
         $list = new BlogList();
-        $button = new HtmlElement();
-        $button->getButton('Создать запись', array('blog' => 'new_mass'));
+        if (Autorisation::getInstance()->isLogin()) {
+            $button = new HtmlElement();
+            $button->getButton('Создать запись', './?blog=new_mass');
+        }
+        else {
+            $button = '';
+        }
         HtmlDocument::getInstance()->addContent($button);
         HtmlDocument::getInstance()->addContent($list);
         HtmlDocument::getInstance()->addContent($button);
     }
     
     private function newMass() {
+        if (!Autorisation::getInstance()->isLogin()) {
+            $page_info = new PageInfo(
+                    'Ошибка авторизации',
+                    'Прежде чем писать сообщение, вам необходимо войти в систему.'
+                );
+            $page_info->setMassType('error');
+            HtmlDocument::getInstance()->addContent($page_info);
+            return false;
+        }
         $blog_mass = new BlogMass();
         if (isset($_POST['save'])) {
             $blog_mass->parsHttpData();

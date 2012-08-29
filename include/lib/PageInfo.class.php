@@ -11,7 +11,9 @@ class PageInfo extends HtmlElement {
     private $mass_type;
     public $info_mass;
     
-    public function __construct() {
+    public function __construct($title = '', $mass = '') {
+        $this->page_title = $title;
+        $this->info_mass = $mass;
         $this->mass_type = 'ok';
         parent::__construct();
     }
