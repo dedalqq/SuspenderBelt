@@ -20,6 +20,7 @@ class Date {
     }
     
     static public function init() {
+        date_default_timezone_set('Europe/Moscow');
         self::$now = date('U');
         self::$months = array(
             1 => 'џэт',
