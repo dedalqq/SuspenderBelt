@@ -48,7 +48,9 @@ class BlogController {
         }
         HtmlDocument::getInstance()->addContent($button);
         HtmlDocument::getInstance()->addContent($list);
-        HtmlDocument::getInstance()->addContent($button);
+        if (!$list->isEmpty()) {
+            HtmlDocument::getInstance()->addContent($button);
+        }
     }
     
     private function newMass() {
