@@ -62,15 +62,11 @@ var control = function(i, data) {
         $('#'+i).fadeOut("slow", function() {
             $('#'+i).html(data[i]);
             onAjaxMod();
-            //alert(i);
             $('#'+i).fadeIn("slow");
         });
 }
     for(var i in data) {
-        //alert(i);
-        
         control(i, data);
-        //alert(data[i]);
     }
 }
 

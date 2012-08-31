@@ -101,7 +101,7 @@ class HtmlDocument {
                 }
                 $elements[$i] = (string)$v;
             }
-            
+            $elements['system_info'] = (string)SystemInfo::getInstance();
             $content = json_encode($elements);
         }
         

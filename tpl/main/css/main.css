@@ -42,13 +42,18 @@ div.login_form {
     text-align: right;
 }
 
+div.system_info {
+    float: left;
+    width: 200px;
+}
+
 div.login_form tr:first-child input {
     width: 100%
 }
 
 div.logo_img {
     float: left;
-    width: 310px;
+    width: 510px;
 }
 
 .top_menu {

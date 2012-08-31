@@ -30,4 +30,14 @@ function raplace_uri_parametrs($parametrs = array(), $uri = '') {
     return $script.'?'.implode('&', $result_parametrs);
 }
 
+function byt_format($value) {
+    $i = 0;
+    $format = array('b', 'Kb', 'Mb', 'Gb');
+    while ($value > 1024) {
+        $i++;
+        $value = $value/1024;
+    }
+    return round($value, 2).' '.$format[$i];
+}
+
 ?>
