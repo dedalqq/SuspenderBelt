@@ -65,8 +65,20 @@ var control = function(i, data) {
             $('#'+i).fadeIn("slow");
         });
 }
+var open_dialog = function(i, data) {
+    $('#'+i).html(data[i]);
+    onAjaxMod();
+    $('#dialog_window').animate({
+        top: 105
+    }, 500);
+}
     for(var i in data) {
-        control(i, data);
+        if (i == 'dialog') {
+            open_dialog(i, data);
+        }
+        else {
+            control(i, data);
+        }
     }
 }
 

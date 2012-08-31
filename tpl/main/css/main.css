@@ -205,3 +205,17 @@ div.left_menu h3 {
 .info_page div {
     float: left;
 }
+
+table.dialog {
+    position: fixed;
+    top: 105px;
+    top: -400px;
+    margin-left: 300px;
+    width: 624px;
+    height: 510px;
+}
+
+#dialog {
+    vertical-align: bottom;
+    height: 90%;
+}

@@ -34,7 +34,7 @@ class PersoneController {
     
     private function showUserProfile() {
         $user_profile = new Persone();
-        HtmlDocument::getInstance()->addContent($user_profile);
+        HtmlDocument::getInstance()->addContent($user_profile, 'dialog');
     }
 }
 

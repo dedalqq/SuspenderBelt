@@ -80,21 +80,25 @@ class HtmlDocument {
     
     private function getContent() {
         $content = '';
-        foreach ($this->main_content['content'] as $i => $v) {
-            /**
-             * @todo тут надо как то привести в порядок 
-             */
-            if (is_array($v)) {
-                bug($v);
-            }
-            if ($v != null) {
-                $content.= (string)$v;
+        if (isset($this->main_content['content'])) {
+            foreach ($this->main_content['content'] as $i => $v) {
+                /**
+                * @todo тут надо как то привести в порядок 
+                */
+                if (is_array($v)) {
+                    bug($v);
+                }
+                if ($v != null) {
+                    $content.= (string)$v;
+                }
             }
         }
         
         if ($this->print_only_content) {
             $elements = array();
-            $elements['content'] = $content;
+            if (!empty($content)) {
+                $elements['content'] = $content;
+            }
             foreach($this->main_content as $i => $v) {
                 if ($i == 'content') {
                     continue;
