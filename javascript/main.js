@@ -58,6 +58,9 @@ function onAjaxMod() {
 }
 
 function loadContent(data) {
+$('#dialog_window').animate({
+        top: -400
+    }, 500);
 var control = function(i, data) {
         $('#'+i).fadeOut("slow", function() {
             $('#'+i).html(data[i]);
