@@ -27,6 +27,9 @@ class HtmlElement {
     }
 
     public function __toString() {
+        /**
+         * @todo вот тут все как то очень печально 
+         */
         return '<div class="html_elements">'.$this->html.'</div>';
     }
     
@@ -37,8 +40,10 @@ class HtmlElement {
         else {
             $url = (string)$parametrs;
         }
-        
-        $this->html.= '<div><a href="'.$url.'" class="button">'.$name.'</a></div>';
+        $this->tpl->block('button');
+        $this->tpl->value('url', $url);
+        $this->tpl->value('name', $name);
+        return $this->tpl->echo_tpl('html_elements.html');
     }
 }
 

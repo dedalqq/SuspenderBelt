@@ -40,8 +40,8 @@ class BlogController {
     private function printList() {
         $list = new BlogList();
         if (Autorisation::getInstance()->isLogin()) {
-            $button = new HtmlElement();
-            $button->getButton('Создать запись', './?blog=new_mass');
+            $element = new HtmlElement();
+            $button = $element->getButton('Создать запись', './?blog=new_mass');
         }
         else {
             $button = '';
