@@ -65,10 +65,10 @@ class BlogMass extends Object {
             $tpl->block('blog_form');
             
             if ((bool)$this->getId()) {
-                $tpl->value('editor_mod', 'Редактировать запись');
+                $tpl->value('editor_mod', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ Р·Р°РїРёСЃСЊ');
             }
             else {
-                $tpl->value('editor_mod', 'Создать новую запись');
+                $tpl->value('editor_mod', 'РЎРѕР·РґР°С‚СЊ РЅРѕРІСѓСЋ Р·Р°РїРёСЃСЊ');
             }
         }
         else {

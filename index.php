@@ -3,8 +3,8 @@
 include 'config.php';
 include 'include/init.php';
 
-HtmlDocument::getInstance()->PageHeader->addMenuElement('blog', 'Áëîã');
-HtmlDocument::getInstance()->PageHeader->addMenuElement('log', 'Ëîãè');
+HtmlDocument::getInstance()->PageHeader->addMenuElement('blog', 'Ð‘Ð»Ð¾Ð³');
+HtmlDocument::getInstance()->PageHeader->addMenuElement('log', 'Ð›Ð¾Ð³Ð¸');
 
 HtmlDocument::getInstance()->PageMenu->menuOn();
 

@@ -34,7 +34,7 @@ class PageInfo extends HtmlElement {
     }
     
     /**
-     * Устанавливает тип сообщения
+     * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ С‚РёРї СЃРѕРѕР±С‰РµРЅРёСЏ
      * @param string (ok|not_ok|warning|error) 
      */
     public function setMassType($type = 'ok') {

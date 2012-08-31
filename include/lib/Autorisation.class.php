@@ -47,7 +47,7 @@ class Autorisation {
         $page = new PageInfo;
         $this->user = new User();
         
-        $page->page_title = 'Àâòîğèçàöèÿ';
+        $page->page_title = 'ĞĞ²Ñ‚Ğ¾Ñ€Ğ¸Ğ·Ğ°Ñ†Ğ¸Ñ';
         
         $action = htmlspecialchars($_GET['autorisation']);
         
@@ -60,18 +60,20 @@ class Autorisation {
             
             if ($this->user->getId() > 0)
             {
-                $page->info_mass = 'Âû óñïåøíî àâòîğèçèğîâàëèñü!';
+                $page->info_mass = 'Ğ’Ñ‹ ÑƒÑĞ¿ĞµÑˆĞ½Ğ¾ Ğ°Ğ²Ñ‚Ğ¾Ñ€Ğ¸Ğ·Ğ¸Ñ€Ğ¾Ğ²Ğ°Ğ»Ğ¸ÑÑŒ!';
                 
                 $_SESSION['auth']['user_id'] = $this->user->getId();
+                HtmlDocument::getInstance()->addContent($this, 'login_form');
             }
             else {
-                $page->info_mass = 'Íå âåğíîå ñî÷èòàíèå ëîãèíà è ïàğîëÿ!';
+                $page->info_mass = 'ĞĞµ Ğ²ĞµÑ€Ğ½Ğ¾Ğµ ÑĞ¾Ñ‡Ğ¸Ñ‚Ğ°Ğ½Ğ¸Ğµ Ğ»Ğ¾Ğ³Ğ¸Ğ½Ğ° Ğ¸ Ğ¿Ğ°Ñ€Ğ¾Ğ»Ñ!';
                 $page->setMassType('error');
             }
         }
         elseif ($action == 'exit') {
             $_SESSION['auth']['user_id'] = 0;
-            $page->info_mass = 'Äî ñêîğîé âñòğå÷è!';
+            $page->info_mass = 'Ğ”Ğ¾ ÑĞºĞ¾Ñ€Ğ¾Ğ¹ Ğ²ÑÑ‚Ñ€ĞµÑ‡Ğ¸!';
+            HtmlDocument::getInstance()->addContent($this, 'login_form');
         }
         
         $this->getStatus();

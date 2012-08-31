@@ -41,7 +41,7 @@ class BlogController {
         $list = new BlogList();
         if (Autorisation::getInstance()->isLogin()) {
             $button = new HtmlElement();
-            $button->getButton('Создать запись', './?blog=new_mass');
+            $button->getButton('РЎРѕР·РґР°С‚СЊ Р·Р°РїРёСЃСЊ', './?blog=new_mass');
         }
         else {
             $button = '';
@@ -56,8 +56,8 @@ class BlogController {
     private function newMass() {
         if (!Autorisation::getInstance()->isLogin()) {
             $page_info = new PageInfo(
-                    'Ошибка авторизации',
-                    'Прежде чем писать сообщение, вам необходимо войти в систему.'
+                    'РћС€РёР±РєР° Р°РІС‚РѕСЂРёР·Р°С†РёРё',
+                    'РџСЂРµР¶РґРµ С‡РµРј РїРёСЃР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ, РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РІРѕР№С‚Рё РІ СЃРёСЃС‚РµРјСѓ.'
                 );
             $page_info->setMassType('error');
             HtmlDocument::getInstance()->addContent($page_info);
@@ -69,14 +69,14 @@ class BlogController {
             $page_info = new PageInfo();
             HtmlDocument::getInstance()->addContent($page_info);
             if ($blog_mass->subject == '' || $blog_mass->text == '') {
-                $page_info->page_title = 'Форма заполнена некоректно';
-                $page_info->info_mass = 'Вы не ввели сообщение или заголовок сообщения';
+                $page_info->page_title = 'Р¤РѕСЂРјР° Р·Р°РїРѕР»РЅРµРЅР° РЅРµРєРѕСЂРµРєС‚РЅРѕ';
+                $page_info->info_mass = 'Р’С‹ РЅРµ РІРІРµР»Рё СЃРѕРѕР±С‰РµРЅРёРµ РёР»Рё Р·Р°РіРѕР»РѕРІРѕРє СЃРѕРѕР±С‰РµРЅРёСЏ';
                 $page_info->setMassType('error');
             }
             else {
                 $blog_mass->save();
-                $page_info->page_title = 'Сообщение сохранено';
-                $page_info->info_mass = 'Поздравляем, ваще сообщение успешно сохранено';
+                $page_info->page_title = 'РЎРѕРѕР±С‰РµРЅРёРµ СЃРѕС…СЂР°РЅРµРЅРѕ';
+                $page_info->info_mass = 'РџРѕР·РґСЂР°РІР»СЏРµРј, РІР°С‰Рµ СЃРѕРѕР±С‰РµРЅРёРµ СѓСЃРїРµС€РЅРѕ СЃРѕС…СЂР°РЅРµРЅРѕ';
                 return true;
             }
         }

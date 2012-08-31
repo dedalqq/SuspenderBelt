@@ -56,9 +56,8 @@ class HtmlDocument {
     public function printDocument() {
         
         $tpl = Tpl::getInstance();
-        
+        header('Content-Type: text/html;charset='.$GLOBALS['config']['encoding']);
          if ($this->print_only_content) {
-             header('Content-Type: text/html;charset='.$GLOBALS['config']['encoding']);
              print $this->getContent();
          }
          else {
@@ -68,15 +67,22 @@ class HtmlDocument {
             $tpl->value('content', $this->getContent());
 
             $tpl->value('footer', (string)$this->PageFooter);
+            
+            $tpl->value('encoding', $GLOBALS['config']['encoding']);
+            /**
+             * @todo указывать тайтл страницы из какотого другого места 
+             */
+            $tpl->value('page_title', 'omg-team');
+            
             print $tpl->echo_tpl('index.html');
          }
     }
     
     private function getContent() {
         $content = '';
-        foreach ($this->main_content as $i => $v) {
+        foreach ($this->main_content['content'] as $i => $v) {
             /**
-             * @todo ��� ���� ��� �� �������� � ������� 
+             * @todo тут надо как то привести в порядок 
              */
             if (is_array($v)) {
                 bug($v);
@@ -85,11 +91,30 @@ class HtmlDocument {
                 $content.= (string)$v;
             }
         }
+        
+        if ($this->print_only_content) {
+            $elements = array();
+            $elements['content'] = $content;
+            foreach($this->main_content as $i => $v) {
+                if ($i == 'content') {
+                    continue;
+                }
+                $elements[$i] = (string)$v;
+            }
+            
+            $content = json_encode($elements);
+        }
+        
         return $content;
     }
     
-    public function addContent($content = '') {
-        $this->main_content[] = $content;
+    public function addContent($element = '', $palce = 'content') {
+        if ($palce == 'content') {
+            $this->main_content[$palce][] = $element;
+        }
+        else {
+            $this->main_content[$palce] = $element;
+        }
         return true;
     }
 }

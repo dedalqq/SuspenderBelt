@@ -10,6 +10,11 @@ body {
     overflow-y:scroll;
 }
 
+input {
+    padding: 2px;
+    margin: 0px;
+}
+
 div.body {
     width: 1024px;
     margin: auto;

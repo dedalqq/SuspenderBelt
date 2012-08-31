@@ -6,7 +6,7 @@
  */
 class PersoneController {
     
-    private $object;
+    private static $object;
     
     /**
      * @var User
@@ -29,7 +29,12 @@ class PersoneController {
     }
     
     private function controller() {
-        
+        $this->showUserProfile();
+    }
+    
+    private function showUserProfile() {
+        $user_profile = new Persone();
+        HtmlDocument::getInstance()->addContent($user_profile);
     }
 }
 

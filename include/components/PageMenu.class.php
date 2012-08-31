@@ -13,7 +13,7 @@ class PageMenu extends HtmlElement {
     public function __construct() {
         parent::__construct();
         $this->show = false;
-        $this->menuTitle = 'Μενώ';
+        $this->menuTitle = 'ΠΠµΠ½Ρ';
     }
     
     public function menuOn() {
