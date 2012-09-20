@@ -226,3 +226,17 @@ table.dialog {
     vertical-align: bottom;
     height: 90%;
 }
+
+.file_preview {
+    float: left;
+}
+
+.file_preview img {
+    border: solid 1px #CCC;
+    padding: 5px;
+    background-color: white;
+}
+
+.file_preview .file_info {
+    color: #AAAAAA;
+}

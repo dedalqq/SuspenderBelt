@@ -29,11 +29,32 @@ if (isset($_GET['file_upload']) && isset($_FILES['file'])) {
         
         if ($i == 0 && $file_num > 1) {
             $file->group_id = $id;
-            $file->save();
+            $id = $file->save();
         }
-        echo 'qq';
+        echo "<script>
+                //alert(1);
+                window.parent.updateFile(".$id.", '".$_POST['file_form']."');
+            </script>";
     }
     exit();
+}
+
+if (!empty($_POST['get_preview'])) {
+    $tpl = Tpl::getInstance();
+    
+    $file = new File($_POST['file_id']);
+    if (!empty($file->name)) {
+        
+        $tpl->value('file_url', $file->getUrl());
+        $tpl->value('file_name', $file->name);
+        $tpl->value('file_id', $file->getId());
+        $tpl->value('file_size', byt_format($file->size));
+        $tpl->value('file_date', Date::format($file->date));
+        
+        $tpl->block('file_preview');
+        
+        echo $tpl->echo_tpl('file.html');
+    }
 }
 
 if (!empty($_GET['download_file'])) {

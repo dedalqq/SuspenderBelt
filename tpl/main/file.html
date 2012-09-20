@@ -1,15 +1,35 @@
-<!-- BEGIN form -->
+<!-- BEGIN form_div -->
+<div id="file_form_{f_name}">
+<!-- END form_div -->
+
+<!-- BEGIN file_form -->
 <form action="handler.php?file_upload=1" target="{f_name}" method="post" class="a_mode_on" enctype="multipart/form-data">
-
+    <input type="hidden" name="file_form" value="file_form_{f_name}" />
     <input type="file" class="file_input" name="file[]" multiple />
-
 </form>
-
-<iframe name="{f_name}" id="{f_name}" ></iframe>
+<iframe name="{f_name}" id="{f_name}" style="display: none;" ></iframe>
 <script>
     initUploadFile();
 </script>
-<!-- END form -->
+<!-- END file_form -->
+
+<!-- BEGIN file_preview -->
+<div class="file_preview">
+    <div>
+        <img src="{file_url}" height="150" />
+    </div>
+    <div>
+        <span>{file_name}</span><br>
+        <span class="file_info">{file_size}</span><br>
+        <span class="file_info">{file_date}</span><br>
+    </div>
+    <input type="hidden" name="file_id[]" value="{file_id}" />
+</div>
+<!-- END file_preview -->
+
+<!-- BEGIN form_div -->
+</div>
+<!-- END form_div -->
 
 <!-- BEGIN link -->
 <a href="{url}" class="{class}">{name}</a>

@@ -20,9 +20,8 @@ elseif(HtmlDocument::getInstance()->get('mod') == 'file') {
     $file = new File;
     HtmlDocument::getInstance()->addContent($file);
     
-    $file2 = new File(8);
-    
-    HtmlDocument::getInstance()->addContent($file2->getLink(true));
+    $file_list = new FileList();
+    HtmlDocument::getInstance()->addContent($file_list);
 }
 else {
     BlogController::getInstance();
