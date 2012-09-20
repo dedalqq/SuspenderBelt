@@ -6,6 +6,13 @@
  */
 class File extends Object {
     
+    public $name;
+    public $type;
+    public $user_id;
+    public $date;
+    public $group_id;
+    public $size;
+
     public function __construct($id = 0) {
         parent::__construct($id);
     }
@@ -13,17 +20,32 @@ class File extends Object {
         return 'files';
     }
     
+    public function getUrl($download = false) {
+        return 'handler.php?'.($download ? 'get_file=1&' : '').'download_file='.$this->getId();
+    }
+    
+    public function getLink($print_size = false, $download = false) {
+        $tpl = Tpl::getInstance();
+        $name = $this->name;
+        if ($print_size) {
+            $name.= ' ('.byt_format($this->size).')';
+        }
+        $tpl->block('link');
+        $tpl->value('url', $this->getUrl($download));
+        $tpl->value('class', 'a_mode_on');
+        $tpl->value('name', $name);
+        
+        return $tpl->echo_tpl('file.html');
+    }
+    
     public function __toString() {
-        bug($_FILES);
-        $form = Tpl::getInstance();
-        $file = Tpl::getInstance();
-        $form->block('form');
-        $file->block('file');
-        $form->value('method', 'post');
-        $form->value('action', $_SERVER['REQUEST_URI']);
-        $file->value('name', 'file');
-        $form->value('form_contents', $file->echo_tpl('html_elements.html'));
-        return $form->echo_tpl('html_elements.html');
+        
+        $tpl = Tpl::getInstance();
+        
+        $tpl->block('form');
+        $tpl->value('f_name', 'file_'.rand(100, 10000));
+        
+        return $tpl->echo_tpl('file.html');
     }
 }
 

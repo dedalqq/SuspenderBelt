@@ -22,7 +22,16 @@ class MySql {
     private $sql_num_query;
 
     private function __construct($host, $login, $password, $db_name, $prefix) {
-        $this->link = mysql_connect($host, $login, $password);
+        $this->link = @mysql_connect($host, $login, $password);
+        if (!$this->link) {
+            $page = new PageInfo(
+                    'Ошибка подключения к базе данных',
+                    'Не удалось подключиться к базе данных, проверьте правильность настройки подключения, а так же доступность сервера базы данных'
+                    );
+            $page->setMassType('error');
+            HtmlDocument::getInstance()->addContent($page);
+            return false;
+        }
         mysql_select_db($db_name, $this->link);
 
         $this->db_prefix = $prefix;
@@ -46,6 +55,9 @@ class MySql {
     }
 
     function char_set($string) {
+        if (!$this->link) {
+            return false;
+        }
         mysql_set_charset($string, $this->link);
     }
 
@@ -123,6 +135,9 @@ class MySql {
     }
 
     function db_exec($standart = false, $reset = true) {
+        if (!$this->link) {
+            return false;
+        }
         $this->sql_query = 'SELECT';
 
         if (count($this->rows_list) > 0) {

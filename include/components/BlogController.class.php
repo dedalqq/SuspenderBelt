@@ -1,6 +1,9 @@
 <?php
 /**
  * Description of BlogController
+ * 
+ * @todo перенести в папку controllers вместе с другими контроллерами
+ * и подправить автолоад
  *
  * @author dedal.qq
  */
@@ -40,16 +43,16 @@ class BlogController {
     private function printList() {
         $list = new BlogList();
         if (Autorisation::getInstance()->isLogin()) {
-            $element = new HtmlElement();
-            $button = $element->getButton('Создать запись', './?blog=new_mass');
+            //$element = new HtmlElement();
+            //$button = $element->getButton('Создать запись', './?blog=new_mass');
         }
         else {
-            $button = '';
+            //$button = '';
         }
-        HtmlDocument::getInstance()->addContent($button);
+        //HtmlDocument::getInstance()->addContent($button);
         HtmlDocument::getInstance()->addContent($list);
         if (!$list->isEmpty()) {
-            HtmlDocument::getInstance()->addContent($button);
+            //HtmlDocument::getInstance()->addContent($button);
         }
     }
     

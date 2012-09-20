@@ -35,6 +35,10 @@ abstract class ObjectList {
         return $this->count;
     }
     
+    /**
+     * @todo Сделать так, что бы этот метод работал =)
+     * @return boolean 
+     */
     public function isEmpty() {
         if ($this->count == 0) {
             return true;
@@ -43,9 +47,14 @@ abstract class ObjectList {
     }
     
     public function __toString() {
+        /**
+         * @todo разбить на страницы 
+         */
         $this->sql->db_select_table($this->object->getTableName());
         $data = $this->sql->db_exec(true);
-        
+        if (!$data) {
+            return '';
+        }
         foreach ($data as $i => $v) {
             $this->object->setData($v);
             $this->html.= (string)$this->object->printToList();

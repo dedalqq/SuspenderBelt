@@ -5,7 +5,7 @@
  *
  * @author dedal.qq
  */
-class PageFooter extends HtmlElement {
+class PageFooter extends PageElement {
     
     public function __toString() {
         return '';

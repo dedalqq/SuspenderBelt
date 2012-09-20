@@ -30,6 +30,9 @@ class Autorisation {
     }
     
     public function getUser() {
+        if (!$this->user instanceof User) {
+            $this->user = new User;
+        }
         return $this->user;
     }
     

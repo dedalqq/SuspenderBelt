@@ -72,6 +72,7 @@ div.logo_img {
     background: url('../img/m2.png');
     background-repeat: repeat-x;
     font-size: 11pt;
+    width: 100%;
 }
 
 .top_menu tr td.text {
@@ -202,8 +203,14 @@ div.left_menu h3 {
     margin: 0px;
 }
 
-.info_page div {
+.info_page div.img_info {
     float: left;
+    width: 60px;
+}
+
+.info_page div:last-child {
+    float: left;
+    width: 70%;
 }
 
 table.dialog {

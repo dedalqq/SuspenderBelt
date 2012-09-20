@@ -15,11 +15,14 @@ class Tpl {
     private static $object;
     private $result;
     
+    private $base_elements;
+    
     public static $init_file_folder;
 
     private function __construct($file_folder, $defolt = 0) {
         $this->file_folder = $file_folder;
         $this->defolt = $defolt;
+        $this->base_elements = array();
     }
 
     /**
@@ -226,12 +229,28 @@ class Tpl {
 
         return $this->result;
     }
+    
+    function initElements($file_name) {
+        
+        $this->file = @fopen($this->file_folder . "//" . $file_name, "r");
 
+        if ($this->file == false) {
+            return "Can't load file: " . $this->file_folder . "//" . $file_name;
+        }
+        
+        while (!feof($this->file)) {
+            $str = fgets($this->file);
+            list($name, $body) = explode(':', $str);
+            $this->base_elements[$name] = $body;
+        }
+    }
+    
+    function getElement($name, $values = array()) {
+        $element = $this->base_elements[$name];
+        foreach($values as $i => $v) {
+            $element = str_replace('{'.$i.'}', $v, $element);
+        }
+        return $element;
+    }
 }
-
-/**
- * @todo Переделать инициализацию этого класа, всетаки лучше когда параметр с
- * папоко передается именно в файле init.php там вызывать либо гетинстанс
- * либо метод инициализации 
- */
 ?>

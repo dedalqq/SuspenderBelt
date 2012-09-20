@@ -10,4 +10,6 @@ $GLOBALS['config']['tpl_folder']            =   'tpl/main';
 
 $GLOBALS['config']['encoding']            =   'utf8';
 
+$GLOBALS['config']['file_storage']          =   'files/';
+
 ?>

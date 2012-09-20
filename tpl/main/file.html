@@ -1,0 +1,16 @@
+<!-- BEGIN form -->
+<form action="handler.php?file_upload=1" target="{f_name}" method="post" class="a_mode_on" enctype="multipart/form-data">
+
+    <input type="file" class="file_input" name="file[]" multiple />
+
+</form>
+
+<iframe name="{f_name}" id="{f_name}" ></iframe>
+<script>
+    initUploadFile();
+</script>
+<!-- END form -->
+
+<!-- BEGIN link -->
+<a href="{url}" class="{class}">{name}</a>
+<!-- END link -->

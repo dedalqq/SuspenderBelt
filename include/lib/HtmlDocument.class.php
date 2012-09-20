@@ -71,6 +71,11 @@ class HtmlDocument {
             $tpl->value('encoding', $GLOBALS['config']['encoding']);
             /**
              * @todo указывать тайтл страницы из какотого другого места 
+             * Наверное лучше всего из индекса или из инициализации, но
+             * из индекса явно лучше =)
+             * а вообще пусть лучше тайтл указывает, или же хотя бы просто
+             * может перезаписывать контроллер
+             * который щас работает
              */
             $tpl->value('page_title', 'omg-team');
             
@@ -83,7 +88,8 @@ class HtmlDocument {
         if (isset($this->main_content['content'])) {
             foreach ($this->main_content['content'] as $i => $v) {
                 /**
-                * @todo тут надо как то привести в порядок 
+                * @todo тут надо как то привести в порядок
+                 * -- в следующий раз пиши, что конкртено не нравится
                 */
                 if (is_array($v)) {
                     bug($v);
@@ -120,6 +126,12 @@ class HtmlDocument {
             $this->main_content[$palce] = $element;
         }
         return true;
+    }
+    
+    public function get($value) {
+        if (isset($_GET[$value])) {
+            return $_GET[$value];
+        }
     }
 }
 

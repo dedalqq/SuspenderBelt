@@ -5,7 +5,7 @@
  *
  * @author dedal.qq
  */
-class PageMenu extends HtmlElement {
+class PageMenu extends PageElement {
     
     public $menuTitle;
     private $show;

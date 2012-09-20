@@ -85,10 +85,20 @@ var open_dialog = function(i, data) {
     }
 }
 
-/**
- * @todo каким то образом множится, это не есть хорошо
- * наверное из за того, что селектор повторно срабатывает
- * надо вопервых сделать так, что бы селектились все формы и ссылки
- * у которых нету специального класса или параметра
- * и после того как мы прошлись селектором добавлять этот класс
- */
+function initUploadFile() {
+    $('.file_input').each(function(i, el) {
+        var iframe = $(el).parent().attr('target');
+        $('#'+iframe).change(function() {
+            alert(1);
+        });
+        $(el).change(function() {
+            $(el).parent().submit(function() {
+                //$(this).ajaxSubmit({
+                    //success: function() {alert(1)}
+                //});
+            });
+            $(el).parent().submit();
+            //alert($('#'+iframe).contents().find('body').html());
+        });
+    });
+}

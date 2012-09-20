@@ -5,7 +5,7 @@
  *
  * @author dedal.qq
  */
-class PageInfo extends HtmlElement {
+class PageInfo extends PageElement {
     
     public $page_title;
     private $mass_type;

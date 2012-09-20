@@ -4,7 +4,7 @@
  *
  * @author dedal.qq
  */
-class Persone extends HtmlElement {
+class Persone extends PageElement {
     
     /**
      * @var User
