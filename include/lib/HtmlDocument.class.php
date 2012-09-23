@@ -34,6 +34,7 @@ class HtmlDocument {
     private function __construct() {
         $this->ParseHttpRequst();
         
+        $this->main_content[0] = '';
         $this->PageHeader = new PageHeader();
         $this->PageMenu = new PageMenu();
         $this->PageFooter = new PageFooter();
@@ -126,6 +127,18 @@ class HtmlDocument {
             $this->main_content[$palce] = $element;
         }
         return true;
+    }
+    
+    /**
+     * @todo Реализовать метод
+     * @param type $title 
+     */
+    public function addPageTitle($title) {
+        
+    }
+    
+    public function getRequestUrl() {
+        return $_SERVER['REQUEST_URI'];
     }
     
     public function get($value) {

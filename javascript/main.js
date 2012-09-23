@@ -86,21 +86,9 @@ var open_dialog = function(i, data) {
 }
 
 function initUploadFile() {
-    $('.file_input').each(function(i, el) {
-        var iframe = $(el).parent().attr('target');
-        $('#'+iframe).change(function() {
-            alert(1);
+    $('.file_input').change(function() {
+            $(this).parent().submit();
         });
-        $(el).change(function() {
-            $(el).parent().submit(function() {
-                //$(this).ajaxSubmit({
-                    //success: function() {alert(1)}
-                //});
-            });
-            $(el).parent().submit();
-            //alert($('#'+iframe).contents().find('body').html());
-        });
-    });
 }
 
 function updateFile(file_id, form_id) {

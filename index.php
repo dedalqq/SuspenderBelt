@@ -6,7 +6,10 @@ include 'include/init.php';
 HtmlDocument::getInstance()->PageHeader->addMenuElement('blog', 'Блог');
 HtmlDocument::getInstance()->PageHeader->addMenuElement('log', 'Логи');
 
-HtmlDocument::getInstance()->PageHeader->addMenuElementRight('file', 'Файлы');
+if ((bool)Autorisation::getInstance()->getUser()->getId()) {
+    HtmlDocument::getInstance()->PageHeader->addMenuElementRight('file', 'Файлы');
+    HtmlDocument::getInstance()->PageHeader->addMenuElementRight('settings', 'Настройки');
+}
 
 HtmlDocument::getInstance()->PageMenu->menuOn();
 
@@ -22,6 +25,9 @@ elseif(HtmlDocument::getInstance()->get('mod') == 'file') {
     
     $file_list = new FileList();
     HtmlDocument::getInstance()->addContent($file_list);
+}
+elseif(HtmlDocument::getInstance()->get('mod') == 'settings') {
+    UserSettingsController::getInstance();
 }
 else {
     BlogController::getInstance();

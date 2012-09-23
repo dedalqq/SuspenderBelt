@@ -10,9 +10,12 @@ class UserSettings extends Object {
     protected $name;
     protected $value;
     
+    private $tpl;
+    
     public function __construct() {
         parent::__construct();
         $this->user_id = Autorisation::getInstance()->getUser()->getId();
+        $this->tpl = Tpl::getInstance();
     }
     
     public function getTableName() {
@@ -30,6 +33,16 @@ class UserSettings extends Object {
         $this->load("`user_id`=".$this->user_id." AND `name`='".$this->name."'");
         $this->value = $value;
         $this->save();
+    }
+    
+    public function __toString() {
+        
+        
+        $avatar = new File(Autorisation::getInstance()->getUser()->avatar_id);
+        
+        $this->tpl->value('avatar', $avatar);
+        
+        return $this->tpl->echo_tpl('user_settings.html');
     }
     
 }

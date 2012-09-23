@@ -10,7 +10,11 @@ class User extends Object {
     public $login;
     public $password;
     public $date;
-    
+    public $avatar_id;
+    public $first_name;
+    public $last_name;
+    public $mid_name;
+
     public function __construct($id = 0) {
         parent::__construct($id);
     }

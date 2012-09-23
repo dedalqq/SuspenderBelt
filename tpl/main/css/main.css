@@ -229,6 +229,8 @@ table.dialog {
 
 .file_preview {
     float: left;
+    margin: 2px;
+    height: 182px;
 }
 
 .file_preview img {

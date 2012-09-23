@@ -2,30 +2,67 @@
 <div id="file_form_{f_name}">
 <!-- END form_div -->
 
-<!-- BEGIN file_form -->
-<form action="handler.php?file_upload=1" target="{f_name}" method="post" class="a_mode_on" enctype="multipart/form-data">
-    <input type="hidden" name="file_form" value="file_form_{f_name}" />
-    <input type="file" class="file_input" name="file[]" multiple />
-</form>
-<iframe name="{f_name}" id="{f_name}" style="display: none;" ></iframe>
-<script>
-    initUploadFile();
-</script>
-<!-- END file_form -->
-
 <!-- BEGIN file_preview -->
 <div class="file_preview">
     <div>
-        <img src="{file_url}" height="150" />
+        <img src="{file_url}" />
     </div>
     <div>
         <span>{file_name}</span><br>
+        <span class="file_info">{user_name}</span><br>
         <span class="file_info">{file_size}</span><br>
         <span class="file_info">{file_date}</span><br>
     </div>
     <input type="hidden" name="file_id[]" value="{file_id}" />
 </div>
 <!-- END file_preview -->
+
+<!-- BEGIN file_preview_list -->
+<div class="file_preview">
+    <div>
+        <img src="{file_url}" />
+    </div>
+    <div>
+        <span>{file_name}</span><br>
+        <span class="file_info">{user_name}</span><br>
+        <span class="file_info">{file_size}</span><br>
+        <span class="file_info">{file_date}</span><br>
+    </div>
+    <input type="hidden" name="file_id[]" value="{file_id}" />
+</div>
+<!-- END file_preview_list -->
+
+<!-- BEGIN file_preview_audio -->
+<div class="file_preview">
+    <div>
+        <script language="JavaScript" src="plugins/mp3_player/audio-player.js"></script>
+        <object type="application/x-shockwave-flash" data="plugins/mp3_player/player.swf" id="audioplayer1" height="24" width="290">
+        <param name="movie" value="plugins/mp3_player/player.swf">
+        <param name="FlashVars" value="playerID=audioplayer1&soundFile={file_url}">
+        <param name="quality" value="high">
+        <param name="menu" value="false">
+        <param name="wmode" value="transparent">
+        </object>
+    </div>
+    <div>
+        <span>{file_name}</span><br>
+        <span class="file_info">{user_name}</span><br>
+        <span class="file_info">{file_size}</span><br>
+        <span class="file_info">{file_date}</span><br>
+    </div>
+</div>
+<!-- END file_preview_audio -->
+
+<!-- BEGIN file_form -->
+<form action="{action}" target="{f_name}" method="post" class="a_mode_on" enctype="multipart/form-data">
+    <input type="hidden" name="file_form" value="file_form_{f_name}" />
+    <input type="file" class="file_input" name="file[]" {multiple} />
+</form>
+<iframe name="{f_name}" id="{f_name}" style="display: none;" ></iframe>
+<script>
+    initUploadFile();
+</script>
+<!-- END file_form -->
 
 <!-- BEGIN form_div -->
 </div>
