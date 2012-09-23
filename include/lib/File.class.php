@@ -118,7 +118,7 @@ class File extends Object {
         $tpl = Tpl::getInstance();
         if ($this->can_edit) {
             $tpl->block('file_form');
-            //$tpl->value('action', raplace_uri_parametrs(array('file_upload' => 1)));
+            $tpl->value('action', raplace_uri_parametrs(array('file_upload' => 1)));
             $tpl->value('f_name', 'file_'.rand(100, 10000));
             $return_string.= $tpl->echo_tpl('file.html');
         }
