@@ -3,6 +3,9 @@
 include 'config.php';
 include 'include/init.php';
 
+/**
+ * Новый коментарий ничего не обозначающий =)
+ */
 HtmlDocument::getInstance()->PageHeader->addMenuElement('blog', 'Блог');
 HtmlDocument::getInstance()->PageHeader->addMenuElement('log', 'Логи');
 
